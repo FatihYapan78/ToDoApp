@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="">Film Adı Giriniz</label>
+                    <input type="text" name="filmname" class="form-control my-3 border border-2 border-black">
+                    <button class="btn btn-primary d-block ms-auto py-2 px-4" type="submit">Ekle</button>
+                </form>
+            </div>
+            <div class="col">
+                <h1 class="text-center">Film İsimleri</h1>
+                <ul>
+                    
+                    {% for film in films %}
+                    <li>{{ film.title }}<a href="{% url 'FilmDelete' film.id %}" class="text-decoration-none fs-5 text-danger float-end">x</a></li>
+                    {% endfor %}
+                        
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
